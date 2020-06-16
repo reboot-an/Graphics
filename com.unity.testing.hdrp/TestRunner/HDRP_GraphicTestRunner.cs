@@ -37,7 +37,7 @@ public class HDRP_GraphicTestRunner
 
         if (XRGraphicsAutomatedTests.enabled)
         {
-            if (settings.xrCompatible)
+            if (settings.xrCompatible && (settings.xrCompatibleVulkan || SystemInfo.graphicsDeviceType != GraphicsDeviceType.Vulkan))
             {
                 XRGraphicsAutomatedTests.running = true;
 
