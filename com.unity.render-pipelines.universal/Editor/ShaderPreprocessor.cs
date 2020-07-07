@@ -45,6 +45,9 @@ namespace UnityEditor.Rendering.Universal
         ShaderKeyword m_DeprecatedShadowsCascade = new ShaderKeyword("_SHADOWS_CASCADE");
         ShaderKeyword m_DeprecatedLocalShadowsEnabled = new ShaderKeyword("_LOCAL_SHADOWS_ENABLED");
 
+        ShaderKeyword m_Multiview = new ShaderKeyword("STEREO_MULTIVIEW_ON");
+        ShaderKeyword m_SinglePassInstance = new ShaderKeyword("STEREO_INSTANCING_ON");
+
         int m_TotalVariantsInputCount;
         int m_TotalVariantsOutputCount;
 
@@ -237,7 +240,23 @@ namespace UnityEditor.Rendering.Universal
                 if (removeInput)
                     compilerDataList[i] = compilerDataList[--inputShaderVariantCount];
                 else
+                {
+                    if (compilerDataList[i].shaderCompilerPlatform == ShaderCompilerPlatform.Vulkan && compilerDataList[i].shaderKeywordSet.IsEnabled(m_SinglePassInstance))
+                    {
+                        ShaderCompilerData multiViewData = new ShaderCompilerData();
+                        ShaderKeywordSet keyWordSet;
+                        keyWordSet = compilerDataList[i].shaderKeywordSet;
+                        keyWordSet.Disable(m_SinglePassInstance);
+                        keyWordSet.Enable(m_Multiview);
+                        multiViewData.platformKeywordSet = compilerDataList[i].platformKeywordSet;
+                        multiViewData.shaderKeywordSet = keyWordSet;
+                        multiViewData.graphicsTier = compilerDataList[i].graphicsTier;
+                        multiViewData.shaderCompilerPlatform = compilerDataList[i].shaderCompilerPlatform;
+                        multiViewData.shaderRequirements = compilerDataList[i].shaderRequirements;
+                        compilerDataList[i] = multiViewData;
+                    }
                     ++i;
+                }
             }
             
             if(compilerDataList is List<ShaderCompilerData> inputDataList)
