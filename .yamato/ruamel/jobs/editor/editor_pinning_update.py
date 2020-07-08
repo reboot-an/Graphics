@@ -19,7 +19,7 @@ class Editor_PinningUpdateJob():
             f'pipenv install --dev',
             f'curl -L https://artifactory.prd.it.unity3d.com/artifactory/api/gpg/key/public | sudo apt-key add -',
             f'sudo sh -c "echo \'deb https://artifactory.prd.it.unity3d.com/artifactory/unity-apt-local bionic main\' > /etc/apt/sources.list.d/unity.list"',
-            f'sudo apt-get update,'
+            f'sudo apt-get update',
             f'sudo apt-get install yamato-parser -y',
             pss(f'''
             if [[ "$GIT_BRANCH" != "{editor_pin_target_branch }" ]]; then

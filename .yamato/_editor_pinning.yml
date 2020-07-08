@@ -16,7 +16,8 @@ update-editor-pinning:
       -  pipenv install --dev
       -  curl -L https://artifactory.prd.it.unity3d.com/artifactory/api/gpg/key/public | sudo apt-key add -
       -  sudo sh -c "echo 'deb https://artifactory.prd.it.unity3d.com/artifactory/unity-apt-local bionic main' > /etc/apt/sources.list.d/unity.list"
-      -  sudo apt-get update,sudo apt-get install yamato-parser -y
+      -  sudo apt-get update
+      -  sudo apt-get install yamato-parser -y
       -  |5-
 
                      if [[ "$GIT_BRANCH" != "9.x.x/yamato/editor-pinning" ]]; then
@@ -39,7 +40,8 @@ merge-editor-revisions:
       -  pipenv install --dev
       -  curl -L https://artifactory.prd.it.unity3d.com/artifactory/api/gpg/key/public | sudo apt-key add -
       -  sudo sh -c "echo 'deb https://artifactory.prd.it.unity3d.com/artifactory/unity-apt-local bionic main' > /etc/apt/sources.list.d/unity.list"
-      -  sudo apt-get update,sudo apt-get install yamato-parser -y
+      -  sudo apt-get update
+      -  sudo apt-get install yamato-parser -y
       -  |5-
 
                      if [[ "$GIT_BRANCH" != "9.x.x/yamato/editor-pinning-ci-branch" ]]; then
