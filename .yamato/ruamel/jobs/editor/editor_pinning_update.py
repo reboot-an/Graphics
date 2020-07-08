@@ -28,6 +28,7 @@ class Editor_PinningUpdateJob():
             fi'''),# This should never run on anything other than stable. If you try it then it will fail
             f'git config --global user.name "noreply@unity3d.com"', # TODO
             f'git config --global user.email "noreply@unity3d.com"', # TODO
+            f'sudo pip3 install ruamel.yaml',
             f'pipenv run python3 .yamato/ruamel/editor_pinning/update_revisions.py --target-branch { editor_pin_ci_branch } --force-push'
         ]
         
