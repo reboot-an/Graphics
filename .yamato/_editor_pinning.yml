@@ -12,7 +12,7 @@ update-editor-pinning:
     variables:
         CI: true
     commands:
-      -  'sudo pip3 install pipenv '
+      -  sudo pip3 install pipenv
       -  pipenv install --dev
       -  curl -L https://artifactory.prd.it.unity3d.com/artifactory/api/gpg/key/public | sudo apt-key add -
       -  sudo sh -c "echo 'deb https://artifactory.prd.it.unity3d.com/artifactory/unity-apt-local bionic main' > /etc/apt/sources.list.d/unity.list"
@@ -27,7 +27,7 @@ update-editor-pinning:
       -  git config --global user.email noreply@unity3d.com
       -  pipenv run python3 -m .yamato.ruamel.editor_pinning.update_revisions --target-branch 9.x.x/yamato/editor-pinning/ci-branch --force-push
 merge-editor-revisions:
-    name: Merge editor revisions to 9.x.x/yamato/editor-pinning/ci-branch
+    name: Merge editor revisions to 9.x.x/yamato/editor-pinning
     agent:
         type: Unity::VM
         image: package-ci/ubuntu:stable
@@ -35,7 +35,7 @@ merge-editor-revisions:
     variables:
         CI: true
     commands:
-      -  'sudo pip3 install pipenv '
+      -  sudo pip3 install pipenv
       -  pipenv install --dev
       -  curl -L https://artifactory.prd.it.unity3d.com/artifactory/api/gpg/key/public | sudo apt-key add -
       -  sudo sh -c "echo 'deb https://artifactory.prd.it.unity3d.com/artifactory/unity-apt-local bionic main' > /etc/apt/sources.list.d/unity.list"
@@ -48,6 +48,6 @@ merge-editor-revisions:
                      fi
       -  git config --global user.name "noreply@unity3d.com"
       -  git config --global user.email noreply@unity3d.com
-      -  pipenv run python3 -m .yamato.ruamel.merge_revisions --revision $GIT_REVISION --target-branch 9.x.x/yamato/editor-pinning
+      -  pipenv run python3 -m .yamato.ruamel.editor_pinning.merge_revisions --revision $GIT_REVISION --target-branch 9.x.x/yamato/editor-pinning
     dependencies:
       -  .yamato/_abv.yml#all_project_ci_2020.1

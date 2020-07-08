@@ -15,7 +15,7 @@ class Editor_PinningUpdateJob():
     def get_job_definition(self, agent, editor_pin_target_branch, editor_pin_ci_branch):
 
         commands = [
-            f'sudo pip3 install pipenv ',
+            f'sudo pip3 install pipenv',
             f'pipenv install --dev',
             f'curl -L https://artifactory.prd.it.unity3d.com/artifactory/api/gpg/key/public | sudo apt-key add -',
             f'sudo sh -c "echo \'deb https://artifactory.prd.it.unity3d.com/artifactory/unity-apt-local bionic main\' > /etc/apt/sources.list.d/unity.list"',
