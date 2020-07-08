@@ -28,7 +28,7 @@ class Editor_PinningMergeJob():
             fi'''),# This should never run on anything other than stable. If you try it then it will fail
             f'git config --global user.name "noreply@unity3d.com"', # TODO
             f'git config --global user.email "noreply@unity3d.com"', # TODO
-            f'pipenv run python3 .yamato/ruamel/editor_pinning/merge_revisions.py --revision $GIT_REVISION --target-branch { editor_pin_target_branch }'
+            f'pipenv run python3 -m Tools.editor_pinning.merge_revisions.py --revision $GIT_REVISION --target-branch { editor_pin_target_branch }'
         ]
         
         # construct job
