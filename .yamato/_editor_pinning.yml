@@ -26,6 +26,7 @@ update-editor-pinning:
                      fi
       -  git config --global user.name "noreply@unity3d.com"
       -  git config --global user.email "noreply@unity3d.com"
+      -  pipenv install pyyaml
       -  pipenv run python3 -m Tools.editor_pinning.update_revisions.py --target-branch 9.x.x/yamato/editor-pinning-ci-branch --force-push
 merge-editor-revisions:
     name: Merge editor revisions to 9.x.x/yamato/editor-pinning
@@ -50,4 +51,5 @@ merge-editor-revisions:
                      fi
       -  git config --global user.name "noreply@unity3d.com"
       -  git config --global user.email "noreply@unity3d.com"
+      -  pipenv install pyyaml
       -  pipenv run python3 -m Tools.editor_pinning.merge_revisions.py --revision $GIT_REVISION --target-branch 9.x.x/yamato/editor-pinning
