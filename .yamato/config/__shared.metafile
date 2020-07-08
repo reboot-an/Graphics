@@ -157,6 +157,10 @@ non_project_agents:
     type: Unity::VM
     image: package-ci/ubuntu:stable
     flavor: b1.large
+  package_ci_ubuntu_small:
+    type: Unity::VM
+    image: package-ci/ubuntu:stable
+    flavor: b1.small
   package_ci_win_large:
     type: Unity::VM
     image: package-ci/win10:stable
