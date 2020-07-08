@@ -51,5 +51,3 @@ merge-editor-revisions:
       -  git config --global user.name "noreply@unity3d.com"
       -  git config --global user.email noreply@unity3d.com
       -  pipenv run python3 -m .yamato.ruamel.editor_pinning.merge_revisions --revision $GIT_REVISION --target-branch 9.x.x/yamato/editor-pinning
-    dependencies:
-      -  .yamato/_abv.yml#all_project_ci_2020.1
