@@ -24,8 +24,8 @@ update-editor-pinning:
                          echo "Should run on '9.x.x/yamato/editor-pinning' but is running on '$GIT_BRANCH'"
                          exit 1
                      fi
-      -  git config --global user.name "noreply@unity3d.com
-      -  git config --global user.email noreply@unity3d.com
+      -  git config --global user.name "noreply@unity3d.com"
+      -  git config --global user.email "noreply@unity3d.com"
       -  pipenv run python3 -m .yamato.ruamel.editor_pinning.update_revisions --target-branch 9.x.x/yamato/editor-pinning-ci-branch --force-push
 merge-editor-revisions:
     name: Merge editor revisions to 9.x.x/yamato/editor-pinning
@@ -49,5 +49,5 @@ merge-editor-revisions:
                          exit 1
                      fi
       -  git config --global user.name "noreply@unity3d.com"
-      -  git config --global user.email noreply@unity3d.com
+      -  git config --global user.email "noreply@unity3d.com"
       -  pipenv run python3 -m .yamato.ruamel.editor_pinning.merge_revisions --revision $GIT_REVISION --target-branch 9.x.x/yamato/editor-pinning
