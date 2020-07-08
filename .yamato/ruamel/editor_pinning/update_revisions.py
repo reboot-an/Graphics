@@ -8,7 +8,7 @@ import re
 import subprocess
 import sys
 
-import ruamel.yaml as yaml
+import yaml
 
 from util.subprocess_helpers import run_cmd, git_cmd
 
